@@ -1,6 +1,6 @@
 # Figure reproducibility scripts
 
-These scripts reproduce the final main figures and supplementary figures from the public figure source tables in the companion analysis-ready snapshot.
+These scripts reproduce the historical v1.0.0 figure presentation from its public figure-source tables. For the current v1.1.0 figures, use `figures/render_main.py` and `figures/render_supp.py` from the repository root with the [v1.1.0 dataset](https://doi.org/10.5281/zenodo.24487407); see the [current reproduction guide](../../docs/REPRODUCIBILITY.md). The examples below intentionally retain the historical v1.0.0 data reference.
 
 The core numerical reproduction remains separate and uses only Python standard-library modules. Figure rendering is optional and uses the packages listed in `environment/figure_requirements.txt`.
 

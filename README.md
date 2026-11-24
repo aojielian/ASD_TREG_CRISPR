@@ -1,376 +1,41 @@
 # ASD_TREG_CRISPR
 
-[![Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22704659.svg)](https://doi.org/10.5281/zenodo.22704659)
+[![Zenodo data DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24487407.svg)](https://doi.org/10.5281/zenodo.24487407)
 
-Reproducible analysis and figure-generation code for a computational functional-genomics study of **high-confidence autism spectrum disorder (ASD) risk genes in human FOXP3/regulatory T-cell (Treg) regulatory programs**.
+This repository reproduces a functional-genomics analysis of high-confidence autism spectrum disorder (ASD) risk genes in published human FOXP3 perturbation screens. Version 1.1.0 preserves the v1.0.0 processed core and adds expression-detectable backgrounds, gene-property sensitivities, allelic-mechanism annotations, published experimental evidence, and source-based renderers for Figures 1–4 and Supplementary Figures S1–S6.
 
-This repository contains the public **code, configuration, documentation, expected results, manifests, and figure-generation workflows**. The complete analysis-ready processed data are distributed separately through Zenodo:
+| Resource | Location |
+| --- | --- |
+| Code, analysis thresholds and numerical fixtures | This repository |
+| Companion processed dataset | `ASD_TREG_CRISPR_processed_data_v1.1.0.zip` · [10.5281/zenodo.24487407](https://doi.org/10.5281/zenodo.24487407) |
+| Collection DOI | [10.5281/zenodo.22704658](https://doi.org/10.5281/zenodo.22704658) |
+| Published v1.0.0 dataset | [10.5281/zenodo.22704659](https://doi.org/10.5281/zenodo.22704659) |
 
-**Zenodo processed-data release:**  
-**DOI:** [10.5281/zenodo.22704659](https://doi.org/10.5281/zenodo.22704659)
+## Reproduce the results and figures
 
-The GitHub repository and Zenodo dataset are designed to be used together.
+Download `ASD_TREG_CRISPR_processed_data_v1.1.0.zip` from the [v1.1.0 Zenodo record](https://doi.org/10.5281/zenodo.24487407). From the repository root, with CPython 3.13 and base R available:
 
----
-
-## Overview
-
-The released workflow supports processed-data reproduction of the principal analyses underlying the study, including:
-
-- enrichment of high-confidence ASD genes in a human genome-wide FOXP3 CRISPR screen;
-- independent support in a primary human Treg targeted CRISPR screen;
-- direct comparison of FOXP3-regulatory phenotypes with a generic primary T-cell proliferation/TCR-response screen;
-- regulator-class-conditioned and stricter joint-conditioned sensitivity analyses;
-- cross-screen ASD-gene overlap and influence/recalibration analyses;
-- a mouse primary-Treg screen used as a cross-species boundary analysis;
-- source-defined FOXP3-associated expression-program analyses in purified ASD Treg transcriptomic data;
-- paired whole-blood ASD–sibling program-level analyses;
-- reproduction of the final main and supplementary figures from frozen public figure-source tables.
-
-The public release is intended for **transparent reproduction from harmonized processed data**. It does not claim to reconstruct every historical raw-data ingest, source-download, or upstream canonicalization step.
-
----
-
-## Repository / data organization
-
-The public release is split into two components.
-
-### GitHub — code and documentation
-
-This repository contains:
-
-```text
-ASD_TREG_CRISPR/
-├── config/                 # frozen public configuration
-├── data/                   # documentation / lightweight public data notes
-├── docs/                   # analysis map and figure reproducibility documentation
-├── environment/            # optional figure-rendering requirements
-├── expected_results/       # frozen expected outputs for verification
-├── scripts/
-│   ├── reproduce_from_processed/
-│   └── figures/
-├── CHANGELOG.md
-├── DATA_AVAILABILITY.md
-├── DATA_SOURCES.md
-├── LICENSE
-├── README.md
-├── REPRODUCIBILITY.md
-└── RUN_FIRST.md
-```
-
-### Zenodo — processed analysis-ready data
-
-Download:
-
-```text
-ASD_TREG_CRISPR_processed_data_v1.0.0.zip
-```
-
-from:
-
-[https://doi.org/10.5281/zenodo.22704659](https://doi.org/10.5281/zenodo.22704659)
-
-The Zenodo snapshot contains the row-level processed tables required by the public reproduction scripts, including the analysis universes, conditioning tables, program memberships, patient-context tables, and final figure-source data.
-
----
-
-## Quick start
-
-### 1. Clone the repository
-
-Using SSH:
-
-```bash
-git clone git@github.com:aojielian/ASD_TREG_CRISPR.git
-cd ASD_TREG_CRISPR
-```
-
-or HTTPS:
-
-```bash
-git clone https://github.com/aojielian/ASD_TREG_CRISPR.git
-cd ASD_TREG_CRISPR
-```
-
-### 2. Download the Zenodo processed-data archive
-
-Download:
-
-```text
-ASD_TREG_CRISPR_processed_data_v1.0.0.zip
-```
-
-from:
-
-[10.5281/zenodo.22704659](https://doi.org/10.5281/zenodo.22704659)
-
-Extract it to a local directory.
-
-For example:
-
-```text
-/path/to/ASD_TREG_CRISPR_processed_data_v1.0.0/
-```
-
-### 3. Run the minimal processed-data reproduction
-
-From the GitHub repository root:
-
-```bash
-bash scripts/reproduce_from_processed/run_all_processed.sh \
-    /path/to/ASD_TREG_CRISPR_processed_data_v1.0.0
-```
-
-The minimal numerical workflow uses **Python 3 standard-library modules only**.
-
-### 4. Confirm successful reproduction
-
-A successful run should end with:
-
-```text
-MINIMAL_REPRODUCTION_STATUS=PASS
-EXPECTED_RESULTS_FAILURES=0
-```
-
-If both conditions are satisfied, the released processed-data workflow has reproduced the expected public numerical results.
-
----
-
-## What the minimal workflow checks
-
-The processed-data workflow recomputes and verifies, where applicable:
-
-- contingency-table counts;
-- one-sided Fisher exact tests;
-- rank-based tests;
-- direct FOXP3-versus-T-cell-proliferation phenotype-preference statistics;
-- regulator-class-conditioned observed/expected enrichment;
-- stricter joint-conditioned observed/expected enrichment;
-- direct two-test Holm adjustment;
-- complete-case coverage;
-- cross-screen ASD score-1 gene partitions;
-- whole-blood paired sign-flip tests;
-- Moreno purified-Treg program-level statistics;
-- released mouse boundary counts and Fisher P values.
-
-Detailed implementation and scope notes are provided in:
-
-- [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md)
-- [`RUN_FIRST.md`](RUN_FIRST.md)
-- [`DATA_AVAILABILITY.md`](DATA_AVAILABILITY.md)
-
----
-
-## Reproducing the final figures
-
-The final main and supplementary figures can be regenerated directly from the frozen public figure-source tables included in the Zenodo processed-data snapshot.
-
-Figure rendering is optional and requires the packages listed in:
-
-```text
-environment/figure_requirements.txt
-```
-
-Current requirements:
-
-```text
-numpy
-pandas
-matplotlib
-pypdf
-reportlab
-```
-
-### Optional: create a clean Python environment
-
-```bash
+```sh
 python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-python -m pip install -r environment/figure_requirements.txt
+. .venv/bin/activate
+python -m pip install -r requirements.txt
+python -m pip install -r environment/r7_figure_requirements.txt
+bash scripts/smoke_test.sh ../ASD_TREG_CRISPR_processed_data_v1.1.0.zip release-check
 ```
 
-### Main Figures 1–4
+The workflow uses the companion ZIP or its extracted data directory. It verifies the data inventory, recomputes the original screen, specificity and program analyses, refits the M0–M3 grid, checks the fixed mechanism/evidence tables and re-renders all ten figures. Base R independently checks primary profiles and the historical conditional odds ratio. The optional raw-source reconstructions require files from the original providers. See the [reproduction guide](docs/REPRODUCIBILITY.md), [data dictionary](docs/DATA_DICTIONARY.md), [source guide](docs/SOURCES.md) and [figure source map](docs/FIGURE_SOURCE_MAP.md).
 
-```bash
-python scripts/figures/main/render_main_figures.py \
-  --input-dir /path/to/ASD_TREG_CRISPR_processed_data_v1.0.0/06_figure_table_source_data/main \
-  --output-dir outputs/main_figures
-```
+## Analysis scope
 
-### Supplementary Figures S1–S5
+| Comparison | Chen human iTreg | Umhoefer human primary Treg |
+| --- | ---: | ---: |
+| Original measured score-1 genes, hits/tested | 14/242 | 5/33 |
+| Expression-detectable score-1 genes at CPM ≥1, hits/tested | 14/174 | 5/18 |
+| Same-complete-case M2 OR [95% penalized profile CI] | 1.332 [0.706, 2.345] | 3.838 [0.998, 13.097] |
+| M2 two-screen Holm P | 0.360 | 0.101 |
 
-```bash
-python scripts/figures/supplementary/render_supplement.py \
-  --input-dir /path/to/ASD_TREG_CRISPR_processed_data_v1.0.0/06_figure_table_source_data/supplementary \
-  --output-dir outputs/supplementary_figures
-```
+M2 adjusts for regulator class, expression and LOEUF, with targeted-library membership also included for Chen. Neither M2 test reached the adjusted 5% threshold. The complete results retain the exploratory primary-Treg M3 estimate, the expression and coverage sensitivities, and condition-specific failures of model estimation. The [methods](docs/METHODS_AND_STATISTICS.md) specify the denominators and interpretation for each comparison.
 
-### Assemble the combined supplementary PDF
+The frozen score-1 list contains 245 genes. The 104-gene LoF-compatible sensitivity includes 100 inferred and four evidence-tagged classifications under the disease-scope rules. Published evidence records retain the assay, perturbation, cellular context and endpoint at experiment level. Zhu et al. (2026) add candidate-level GATA3 protein evidence in polarized conventional CD4 T cells. The FOXP3 results and adjustment model definitions remain unchanged. [Zhu et al., Cell](https://doi.org/10.1016/j.cell.2026.08.002)
 
-After rendering Supplementary Figures S1–S5:
-
-```bash
-python scripts/figures/supplementary/assemble_supplement.py \
-  --output-dir outputs/supplementary_figures
-```
-
-The supplementary assembler uses the frozen public legend payload:
-
-```text
-scripts/figures/supplementary/figure_legends.json
-```
-
-by default.
-
-Additional figure-reproduction documentation is available in:
-
-- [`scripts/figures/README.md`](scripts/figures/README.md)
-- [`docs/FIGURE_REPRODUCIBILITY.md`](docs/FIGURE_REPRODUCIBILITY.md)
-
----
-
-## Data provenance
-
-The study integrates processed information derived from published human and mouse CRISPR screens and transcriptomic resources.
-
-The public release distinguishes:
-
-- primary functional evidence;
-- independent human primary-Treg support;
-- phenotype-preference analyses;
-- conditioned robustness analyses;
-- cross-species boundary evidence;
-- program-level patient transcriptomic context;
-- descriptive/contextual analyses.
-
-The detailed source inventory and public-data provenance are documented in:
-
-[`DATA_SOURCES.md`](DATA_SOURCES.md)
-
-The Zenodo archive contains harmonized, analysis-ready public tables rather than unnecessary redistribution of complete third-party raw datasets.
-
----
-
-## Reproducibility scope
-
-This repository supports **processed-data minimal reproduction**.
-
-It is designed to allow an independent user to:
-
-1. download the frozen processed-data snapshot;
-2. rerun the principal released statistical calculations;
-3. verify the expected results;
-4. regenerate the final main and supplementary figures.
-
-It does **not** claim to provide a complete from-scratch reconstruction of every original third-party source acquisition or historical upstream data-processing step.
-
-For implementation-specific details, including retained reference quantities and the scope of recomputation, see:
-
-[`REPRODUCIBILITY.md`](REPRODUCIBILITY.md)
-
----
-
-## Expected-results verification
-
-Frozen expected outputs are stored under:
-
-```text
-expected_results/
-```
-
-The minimal workflow compares newly reproduced values with these released expectations rather than relying only on script completion.
-
-The two final status indicators are:
-
-```text
-MINIMAL_REPRODUCTION_STATUS=PASS
-EXPECTED_RESULTS_FAILURES=0
-```
-
-These provide the primary public verification gate for the processed-data workflow.
-
----
-
-## Data availability
-
-The analysis-ready processed-data release is permanently archived at Zenodo:
-
-**DOI:** [10.5281/zenodo.22704659](https://doi.org/10.5281/zenodo.22704659)
-
-GitHub intentionally does not duplicate the complete processed-data payload.
-
-See:
-
-[`DATA_AVAILABILITY.md`](DATA_AVAILABILITY.md)
-
-for the detailed release scope.
-
----
-
-## Code availability
-
-Public code:
-
-[https://github.com/aojielian/ASD_TREG_CRISPR](https://github.com/aojielian/ASD_TREG_CRISPR)
-
-Processed data:
-
-[https://doi.org/10.5281/zenodo.22704659](https://doi.org/10.5281/zenodo.22704659)
-
----
-
-## Version
-
-Current public release:
-
-```text
-v1.0.0
-```
-
-See [`CHANGELOG.md`](CHANGELOG.md) for release notes.
-
----
-
-## Citation
-
-If you use the processed dataset, please cite the Zenodo record:
-
-> ASD_TREG_CRISPR processed data, version 1.0.0. Zenodo. https://doi.org/10.5281/zenodo.22704659
-
-A manuscript-specific citation can be added after formal publication of the associated article.
-
----
-
-## License
-
-Original code in this repository is distributed under the terms provided in [`LICENSE`](LICENSE).
-
-Third-party source data remain subject to their original source terms and citations. The processed-data archive should be used together with the provenance information in [`DATA_SOURCES.md`](DATA_SOURCES.md) and the metadata attached to the Zenodo record.
-
----
-
-## Key documentation
-
-For first-time users:
-
-- [`RUN_FIRST.md`](RUN_FIRST.md) — shortest reproduction route
-- [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) — numerical reproduction scope and implementation details
-- [`DATA_AVAILABILITY.md`](DATA_AVAILABILITY.md) — what is distributed and where
-- [`DATA_SOURCES.md`](DATA_SOURCES.md) — source datasets and provenance
-- [`scripts/figures/README.md`](scripts/figures/README.md) — figure-rendering commands
-- [`docs/FIGURE_REPRODUCIBILITY.md`](docs/FIGURE_REPRODUCIBILITY.md) — final figure-source mapping and reproduction notes
-
----
-
-## Contact / issues
-
-For reproducibility problems, please open a GitHub Issue and include:
-
-- operating system;
-- Python version;
-- command executed;
-- relevant error message;
-- whether the numerical reproduction or figure-rendering workflow was being run.
-
-Do not include private participant information or restricted source data in public issues.
+The [MIT license](LICENSE) covers the repository code. Source-specific terms and attribution apply to upstream data. Cite the applicable data version alongside the code. See the [source guide](docs/SOURCES.md) and [changelog](CHANGELOG.md).

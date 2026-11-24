@@ -1,5 +1,8 @@
 project_name: ASD_TREG_CRISPR
-release_version: 1.0.0
+release_version: 1.1.0
+processed_data_version_doi: "10.5281/zenodo.24487407"
+processed_data_collection_doi: "10.5281/zenodo.22704658"
+processed_data_archive: "ASD_TREG_CRISPR_processed_data_v1.1.0.zip"
 processed_data: Zenodo snapshot/data/processed
 asd_definition: SFARI score-1 label set
 hit_definition: source-provided binary screen hit

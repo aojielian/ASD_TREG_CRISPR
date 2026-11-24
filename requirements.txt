@@ -1,0 +1,4 @@
+# Versions tested together with CPython 3.13.2.
+numpy==2.5.1
+pandas==3.0.5
+scipy==1.18.0

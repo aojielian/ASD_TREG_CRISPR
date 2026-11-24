@@ -1,0 +1,91 @@
+table	selector	field	expected	tolerance
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M0	n_genes	10463	
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M0	asd_n	173	
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M0	asd_hits	14	
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M0	other_hits	239	
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M0	OR	3.815334990285	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M0	CI_low	2.104813239196	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M0	CI_high	6.408206842681	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M0	P	5.424445747201e-05	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M0	interval_status	ESTIMABLE	
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M1	n_genes	10463	
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M1	asd_n	173	
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M1	asd_hits	14	
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M1	other_hits	239	
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M1	OR	2.142275117428	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M1	CI_low	1.144531720249	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M1	CI_high	3.738050389261	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M1	P	0.01880324502338	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M1	interval_status	ESTIMABLE	
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M2	n_genes	10463	
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M2	asd_n	173	
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M2	asd_hits	14	
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M2	other_hits	239	
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M2	OR	1.331614172154	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M2	CI_low	0.7061893091742	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M2	CI_high	2.345216980248	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M2	P	0.3599574937658	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M2	holm_p_m2	0.3599574937658	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M2	interval_status	ESTIMABLE	
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M3	n_genes	10463	
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M3	asd_n	173	
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M3	asd_hits	14	
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M3	other_hits	239	
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M3	OR	1.495290908121	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M3	CI_low	0.7922856490797	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M3	CI_high	2.636913062737	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M3	P	0.2041661915465	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=CHEN|threshold=1|units=CPM|model=M3	interval_status	ESTIMABLE	
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M0	n_genes	698	
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M0	asd_n	18	
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M0	asd_hits	5	
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M0	other_hits	24	
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M0	OR	10.91685563113	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M0	CI_low	3.465145797177	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M0	CI_high	30.63877216281	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M0	P	0.0002036308732269	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M0	interval_status	ESTIMABLE	
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M1	n_genes	698	
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M1	asd_n	18	
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M1	asd_hits	5	
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M1	other_hits	24	
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M1	OR	6.969122335436	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M1	CI_low	1.863619248023	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M1	CI_high	23.22442748922	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M1	P	0.005160594963863	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M1	interval_status	ESTIMABLE	
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M2	n_genes	698	
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M2	asd_n	18	
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M2	asd_hits	5	
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M2	other_hits	24	
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M2	OR	3.837761029373	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M2	CI_low	0.9978377796148	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M2	CI_high	13.09664415239	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M2	P	0.05034572482759	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M2	holm_p_m2	0.1006914496552	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M2	interval_status	ESTIMABLE	
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M3	n_genes	698	
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M3	asd_n	18	
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M3	asd_hits	5	
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M3	other_hits	24	
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M3	OR	5.757611149375	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M3	CI_low	1.40996735197	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M3	CI_high	21.61374911821	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M3	P	0.01610907384996	1e-5
+LOEUF_ADJUSTED_MODELS.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|model=M3	interval_status	ESTIMABLE	
+MEASURED_TO_DETECTABLE_FLOW.tsv	screen=CHEN|threshold=1|units=CPM|stage=ASSAYED	total_n	18966	
+MEASURED_TO_DETECTABLE_FLOW.tsv	screen=CHEN|threshold=1|units=CPM|stage=ASSAYED	ASD_n	242	
+MEASURED_TO_DETECTABLE_FLOW.tsv	screen=CHEN|threshold=1|units=CPM|stage=ASSAYED	ASD_hits	14	
+MEASURED_TO_DETECTABLE_FLOW.tsv	screen=CHEN|threshold=1|units=CPM|stage=ASSAYED	other_hits	243	
+MEASURED_TO_DETECTABLE_FLOW.tsv	screen=CHEN|threshold=1|units=CPM|stage=DETECTABLE	total_n	11348	
+MEASURED_TO_DETECTABLE_FLOW.tsv	screen=CHEN|threshold=1|units=CPM|stage=DETECTABLE	ASD_n	174	
+MEASURED_TO_DETECTABLE_FLOW.tsv	screen=CHEN|threshold=1|units=CPM|stage=DETECTABLE	ASD_hits	14	
+MEASURED_TO_DETECTABLE_FLOW.tsv	screen=CHEN|threshold=1|units=CPM|stage=DETECTABLE	other_hits	242	
+MEASURED_TO_DETECTABLE_FLOW.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|stage=ASSAYED	total_n	1349	
+MEASURED_TO_DETECTABLE_FLOW.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|stage=ASSAYED	ASD_n	33	
+MEASURED_TO_DETECTABLE_FLOW.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|stage=ASSAYED	ASD_hits	5	
+MEASURED_TO_DETECTABLE_FLOW.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|stage=ASSAYED	other_hits	26	
+MEASURED_TO_DETECTABLE_FLOW.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|stage=DETECTABLE	total_n	726	
+MEASURED_TO_DETECTABLE_FLOW.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|stage=DETECTABLE	ASD_n	18	
+MEASURED_TO_DETECTABLE_FLOW.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|stage=DETECTABLE	ASD_hits	5	
+MEASURED_TO_DETECTABLE_FLOW.tsv	screen=UMHOEFER_TREG|threshold=1|units=CPM|stage=DETECTABLE	other_hits	24	

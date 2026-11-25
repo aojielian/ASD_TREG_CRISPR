@@ -6,20 +6,20 @@ The portable extractor transcribes published gene-level summary statistics and m
 
 ```sh
 python scripts/zhu/extract_zhu_evidence.py verify \
-  --derived-dir "$DATA_DIR/data/r8/zhu_derived" \
-  --candidate-master "$DATA_DIR/data/r7/mechanism/CANDIDATE_DIRECTION_MECHANISM.tsv"
+  --derived-dir "$DATA_DIR/data/experimental_evidence/zhu_perturbation" \
+  --candidate-master "$DATA_DIR/data/gene_property_adjustment/allelic_mechanisms/candidate_direction_mechanism.tsv"
 ```
 
-This offline check validates the frozen candidate order, condition matrix, missing entries, guide-quality totals, split assay denominators, and original ZMYND8 anchors. The project plots consume the processed tables. See `data/r8/zhu_derived/DATA_DICTIONARY.md` inside the data package for full schema and statistical definitions.
+This offline check validates the frozen candidate order, condition matrix, missing entries, guide-quality totals, split assay denominators, and original ZMYND8 anchors. The project plots consume the processed tables. See `data/experimental_evidence/zhu_perturbation/data_dictionary.md` inside the data package for full schema and statistical definitions.
 
 ## Reconstruct from the study sources
 
-The optional source reconstruction requires the eight exact files linked in the processed archive's `data/r8/zhu_derived/ZHU_SOURCE_FILES.tsv`. Use the author file links there and retain their basenames in one local directory. Retrieve the original file bytes (GitHub's raw download action). Reference the listed SHA256 digests to identify the snapshot if the source branch changes. Consult the sources' access and reuse terms before retrieving third-party data. Set `ZHU_SOURCE_DIR` to the directory containing those files.
+The optional source reconstruction requires the eight exact files linked in the processed archive's `data/experimental_evidence/zhu_perturbation/zhu_source_files.tsv`. Use the author file links there and retain their basenames in one local directory. Retrieve the original file bytes (GitHub's raw download action). Reference the listed SHA256 digests to identify the snapshot if the source branch changes. Consult the sources' access and reuse terms before retrieving third-party data. Set `ZHU_SOURCE_DIR` to the directory containing those files.
 
 ```sh
 python scripts/zhu/extract_zhu_evidence.py extract \
   --source-dir "$ZHU_SOURCE_DIR" \
-  --candidate-master "$DATA_DIR/data/r7/mechanism/CANDIDATE_DIRECTION_MECHANISM.tsv" \
+  --candidate-master "$DATA_DIR/data/gene_property_adjustment/allelic_mechanisms/candidate_direction_mechanism.tsv" \
   --out-dir reconstructed-zhu
 ```
 

@@ -1,3 +1,5 @@
 # Start here
 
-Download `ASD_TREG_CRISPR_processed_data_v1.1.0.zip` from the [v1.1.0 Zenodo record](https://doi.org/10.5281/zenodo.24487407). Use the release command in the [README](README.md). The [reproduction guide](docs/REPRODUCIBILITY.md) documents the output directories, relative-path entry points and optional provider-file reconstruction.
+Use the processed-data ZIP for the [Zenodo v1.2.0 dataset](https://doi.org/10.5281/zenodo.24532983). Keep the ZIP and its matching SHA-256 sidecar in the same directory. The [archive verification instructions](docs/REPRODUCIBILITY.md#verify-and-extract) explain how to create the sidecar if needed.
+
+Follow the [README workflow](README.md#reproducing-the-analyses) from the repository root. Set `DATA_ZIP` to the downloaded file's absolute path. The commands create a fresh sibling directory for the analysis output, figures, and supplementary workbook. [Software requirements](docs/REPRODUCIBILITY.md#environment)

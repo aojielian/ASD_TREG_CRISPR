@@ -327,6 +327,8 @@ def summarize(candidates, condition_rows, arrayed_rows):
 
 def read_derivative(directory, file, fields):
     path = directory / file
+    if not path.is_file():
+        path = directory / file.lower()
     with path.open(newline="", encoding="utf-8") as handle:
         reader = csv.DictReader(handle, delimiter="\t")
         check(reader.fieldnames == list(fields), f"Unexpected fields in {file}")

@@ -1,0 +1,30 @@
+cell_type	cell_type_label	lineage	conventional_primary	conventional_sensitivity
+Treg	T regulatory cells	Treg	0	0
+CD4_naive	Naive CD4 T cells	Conventional CD4	1	1
+TFH	Follicular helper T cells	Conventional CD4	1	1
+Th1	Th1 cells	Conventional CD4	1	1
+Th1/Th17	Th1/Th17 cells	Conventional CD4	1	1
+Th17	Th17 cells	Conventional CD4	1	1
+Th2	Th2 cells	Conventional CD4	1	1
+CD4_TE	Terminal effector CD4 T cells	Conventional CD4	0	1
+CD8_naive	Naive CD8 T cells	CD8 T	0	0
+CD8_CM	Central memory CD8 T cell	CD8 T	0	0
+CD8_EM	Effector memory CD8 T cells	CD8 T	0	0
+CD8_TE	Terminal effector CD8 T cells	CD8 T	0	0
+MAIT	MAIT cells	Unconventional T	0	0
+VD2+	Vd2 gd T cells	Unconventional T	0	0
+VD2-	Non-Vd2 gd T cells	Unconventional T	0	0
+B_naive	Naive B cells	B	0	0
+B_NSM	Non-switched memory B cells	B	0	0
+B_SM	Switched memory B cells	B	0	0
+B_Ex	Exhausted B cells	B	0	0
+Plasmablasts	Plasmablasts	B	0	0
+NK	Natural killer cells	NK	0	0
+C_mono	Classical monocytes	Monocyte	0	0
+I_mono	Intermediate monocytes	Monocyte	0	0
+NC_mono	Non classical monocytes	Monocyte	0	0
+pDC	Plasmacytoid dendritic cells	Dendritic	0	0
+mDC	Myeloid dendritic cells	Dendritic	0	0
+Neutrophils	Low-density neutrophils	Low-density granulocyte	0	0
+Basophils	Low-density basophils	Low-density granulocyte	0	0
+Progenitor	Progenitor cells	Progenitor	0	0

@@ -1,26 +1,22 @@
-# Figure reproducibility scripts
+# Compatibility figure renderers
 
-These scripts reproduce the historical v1.0.0 figure presentation from its public figure-source tables. For the current v1.1.0 figures, use `figures/render_main.py` and `figures/render_supp.py` from the repository root with the [v1.1.0 dataset](https://doi.org/10.5281/zenodo.24487407); see the [current reproduction guide](../../docs/REPRODUCIBILITY.md). The examples below intentionally retain the historical v1.0.0 data reference.
+These scripts reproduce the earlier figure presentation for compatibility checks. Use the [reproduction guide](../../docs/REPRODUCIBILITY.md#figures-and-supplementary-tables) for the current manuscript figure set.
 
-The core numerical reproduction remains separate and uses only Python standard-library modules. Figure rendering is optional and uses the packages listed in `environment/figure_requirements.txt`.
+Use the `DATA`, `PYTHON`, and `WORK_ROOT` values initialized by the [archive verification workflow](../../docs/REPRODUCIBILITY.md#verify-and-extract). The following commands rebuild the required input paths from the current release and place the outputs in the external work directory. The [optional figure dependencies](../../environment/figure_requirements.txt) include the libraries for this compatibility renderer.
 
-Example commands from the repository root:
+```bash
+"$PYTHON" scripts/release/verify_release.py "$DATA" --legacy-view "$WORK_ROOT/figure-compatibility-inputs"
 
-```sh
-python scripts/figures/main/render_main_figures.py \
-  --input-dir path/to/extracted/ASD_TREG_CRISPR_processed_data_v1.0.0/06_figure_table_source_data/main \
-  --output-dir outputs/main_figures
+"$PYTHON" scripts/figures/main/render_main_figures.py \
+  --input-dir "$WORK_ROOT/figure-compatibility-inputs/06_figure_table_source_data/main" \
+  --output-dir "$WORK_ROOT/compatibility-main-figures"
 
-python scripts/figures/supplementary/render_supplement.py \
-  --input-dir path/to/extracted/ASD_TREG_CRISPR_processed_data_v1.0.0/06_figure_table_source_data/supplementary \
-  --output-dir outputs/supplementary_figures
+"$PYTHON" scripts/figures/supplementary/render_supplement.py \
+  --input-dir "$WORK_ROOT/figure-compatibility-inputs/06_figure_table_source_data/supplementary" \
+  --output-dir "$WORK_ROOT/compatibility-supplementary-figures"
 
-python scripts/figures/supplementary/assemble_supplement.py \
-  --output-dir outputs/supplementary_figures
+"$PYTHON" scripts/figures/supplementary/assemble_supplement.py \
+  --output-dir "$WORK_ROOT/compatibility-supplementary-figures"
 ```
 
-The renderers read relative/argument-provided paths and do not require raw datasets.
-
-The supplementary assembler reads the exact frozen public legend payload from `scripts/figures/supplementary/figure_legends.json` by default. An explicit `--legends` path may be supplied when reproducing in another directory.
-
-Processed figure-source tables are distributed in the Zenodo v1.0.0 dataset: [10.5281/zenodo.22704659](https://doi.org/10.5281/zenodo.22704659).
+The supplementary assembler uses `figure_legends.json` in its script directory. The `--legends` option accepts an explicit path.

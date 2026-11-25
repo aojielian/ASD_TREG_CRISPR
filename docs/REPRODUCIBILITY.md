@@ -1,46 +1,73 @@
-# Reproduce the release
+# Reproduction guide
 
-The complete processed-data workflow uses this repository and the [v1.1.0 data archive](https://doi.org/10.5281/zenodo.24487407). Use CPython 3.13 and base R with `Rscript` on the executable path. The environment was tested with CPython 3.13.2 and R 4.5.1. Use a local environment and the pinned dependency files.
+Use the v1.2.0 code with the processed-data archive identified by the [Zenodo v1.2.0 dataset DOI](https://doi.org/10.5281/zenodo.24532983). The commands below run from the repository root. Keep replay outputs in a new or empty directory outside the repository and data directories. The example creates a new sibling work directory on each run.
 
-```sh
+## Environment
+
+The pinned workflow uses CPython 3.13.2, Bash and R 4.5.1 with `Rscript` on `PATH`. Python libraries are listed in [requirements.txt](../requirements.txt). Bioconductor dependencies are DESeq2 1.50.2, edgeR 4.8.2, limma 3.66.0, AnnotationDbi 1.72.0 and org.Mm.eg.db 3.22.0. Optional signature-source reconstruction also uses msigdbr 25.1.1. The workbook builder uses the Python standard library.
+
+Create a Python environment and install the pinned libraries.
+
+```bash
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install -r requirements.txt
-python -m pip install -r environment/r7_figure_requirements.txt
-bash scripts/smoke_test.sh ../ASD_TREG_CRISPR_processed_data_v1.1.0.zip release-check
 ```
 
-Paths are relative to the repository root in the examples. Replace the data argument with a relative path to the archive or its extracted root. Specify a new or empty output directory. Verification checks the archival SHA-256 sidecar when it accompanies the ZIP, then the active data checksums, manifest inventory and table schemas. It runs the legacy results, the frozen R7 background and model comparisons, source evidence checks, and the ten vector PDF / 600 dpi TIFF renders. Base R independently checks the two primary M2 profiles and the legacy Loo conditional estimate. The results and tolerances are in `expected_results/EXPECTED_CORE_RESULTS.tsv`, `config/r7_expected_results.tsv` and `expected_results.tsv`. The R checks and Python model grid use the stated profile and convergence comparison rules.
+Set `PYTHON` to select an installed interpreter when needed. Install the R packages in an environment compatible with the pinned versions.
 
-The reproduced outputs include historical numeric checks under `legacy/`, adjusted coefficients and sensitivities under `r7/`, source evidence verification and figures. Comparison of statistical results uses the published tolerances. File digests identify the shipped source tables. PDF and TIFF are deterministic within the pinned rendering environment, and font or platform builds can affect byte-level similarity on other systems.
+## Verify and extract
 
-## Individual components
+Use the downloaded archive's actual absolute path for `DATA_ZIP` and retain its published filename. The ZIP and its SHA-256 sidecar must be in the same directory. Keep the original sidecar when available. If the sidecar is unavailable, use the release digest below. The verifier checks this digest against the ZIP before extraction.
 
-With an extracted archive, define a path relative to the repository root:
-
-```sh
-DATA=../ASD_TREG_CRISPR_processed_data_v1.1.0
-python scripts/legacy/run_legacy_reproduction.py "$DATA" legacy-check --rscript Rscript
-python scripts/r7_stats/reproduce.py --data-dir "$DATA" --out-dir r7-check --verify-r
-python scripts/zhu/extract_zhu_evidence.py verify --derived-dir "$DATA/data/r8/zhu_derived" --candidate-master "$DATA/data/r7/mechanism/CANDIDATE_DIRECTION_MECHANISM.tsv"
-python figures/render_main.py "$DATA" rendered
-python figures/render_supp.py "$DATA" rendered
+```bash
+DATA_ZIP="${DATA_ZIP:-/absolute/path/to/ASD_TREG_CRISPR_processed_data_v1.2.0.zip}"
+if [ -f "$DATA_ZIP" ] && [ ! -e "${DATA_ZIP}.sha256" ]; then
+  (
+    set -o noclobber
+    printf '%s  %s\n' '06faee76f0a3d04b787712483516be2f8b796e4a43752c0bf9bfefd9014fc923' "${DATA_ZIP##*/}" > "${DATA_ZIP}.sha256"
+  )
+fi
 ```
 
-The main renderer writes four `Main_Figure_*.pdf` / `.tif` pairs. The supplementary renderer writes six individual pairs under `individual_supplementary/` and a combined `Supplementary_Figures_FINAL.pdf`. The [figure source map](FIGURE_SOURCE_MAP.md) links each panel to the particular source rows and transformations. The separate historical figure scripts retain their original inputs and render earlier presentation versions.
-
-## Optional reconstruction from provider sources
-
-The processed workflow needs no additional scientific inputs. Original count normalization and Zhu derivative extraction require the exact independently obtained files described in the [source guide](SOURCES.md) and companion `SOURCE_ACCESS_AND_REUSE.md`. These files are outside the public dataset archive. The full upstream reconstruction also depends on the frozen versions of provider databases and the cited manual evidence-scope adjudication.
-
-```sh
-python scripts/upstream/reconstruct_expression.py "$DATA" \
-  --itreg-counts provider/count_summary.txt \
-  --peripheral-counts provider/RNAseq_salmon.merged.gene_counts.tsv
-python scripts/zhu/extract_zhu_evidence.py extract \
-  --source-dir provider/zhu-originals \
-  --candidate-master "$DATA/data/r7/mechanism/CANDIDATE_DIRECTION_MECHANISM.tsv" \
-  --out-dir reconstructed-zhu
+```bash
+export PYTHON="${PYTHON:-python3}"
+WORK_ROOT="$(mktemp -d "$(cd .. && pwd -P)/ASD_TREG_reproduction.XXXXXX")"
+"$PYTHON" scripts/release/verify_release.py "$DATA_ZIP" --extract-to "$WORK_ROOT/verified-data"
+DATA="$WORK_ROOT/verified-data/ASD_TREG_CRISPR_processed_data_v1.2.0"
 ```
 
-Expression reconstruction accepts optional `--hpa provider/rna_immune_cell.tsv` when the historical HPA file is available. The source scripts verify frozen file hashes before rebuilding their derivative fields. When a provider supplies a later snapshot, select the recorded version or a lawful hash-matching archive. Keep original third-party files subject to their separate reuse terms.
+The verifier checks the detached archive checksum, ZIP paths and CRC, file checksums, TSV structure, scientific fixtures, and historical compatibility inputs. The workflow restores the necessary historical paths in temporary storage when running the compatibility checks.
+
+## Statistical replay
+
+Run one of these commands from the same shell. Use a separate, new or empty output directory for each run.
+
+```bash
+bash workflows/reproduce.sh "$DATA" "$WORK_ROOT/replay"
+```
+
+For official-source replay, set `EXTERNAL_INPUT_ROOT` to the local directory that holds the files described under [exact official-source inputs](#exact-official-source-inputs).
+
+```bash
+bash workflows/reproduce.sh "$DATA" "$WORK_ROOT/replay-official" "$EXTERNAL_INPUT_ROOT"
+```
+
+Archive-only replay covers the processed core, gene-property models, directional loss-of-function and direct FOXP3–TCR analyses, both immune-cell atlases, and mouse conditional-knockout analyses. The immune-cell context branch recomputes 18 tables with archived inputs. Its parity report marks the 24 source-dependent tables as `REQUIRES_EXTERNAL`. Official-source replay checks all 42 tables in that branch and reconstructs the mouse sample, reference-signature and literature evidence inputs. Both modes verify the distributed statistical fixtures.
+
+The workflow writes results under `historical_core/`, `functional_comparisons/`, `immune_cell_context/`, and `conditional_knockout/` within the selected output directory. The [methods and statistics](METHODS_AND_STATISTICS.md) document the analyses and data boundaries.
+
+## Figures and supplementary tables
+
+```bash
+bash scripts/release_figures/render.sh "$DATA" "$WORK_ROOT/rendered" --strict-byte-parity --submission-legends
+"$PYTHON" scripts/release/build_supplementary_tables.py --source-dir "$DATA/tables/submission" --output "$WORK_ROOT/Supplementary_Tables_S1-S20.xlsx"
+```
+
+The figure replay recreates the four main PDFs and their 600 DPI TIFFs and assembles all 23 supplementary pages. Strict byte parity depends on the pinned rendering libraries and font environment, including the Matplotlib DejaVu Sans fonts and PyMuPDF layout fonts. The workbook builder verifies the typed worksheet inputs before assembly. [Figure and table source maps](FIGURE_SOURCE_MAP.md)
+
+## Exact official-source inputs
+
+The extracted archive's `data/manifests/EXTERNAL_REPLAY_INPUTS.tsv` lists approved provider URLs, checksums, file sizes and the paths relative to `EXTERNAL_INPUT_ROOT`. The official-source workflow uses the rows marked `required_for_full_replay`. The `provenance_only` rows record citation or acquisition context. Obtain the originals under their provider terms and verify the checksums before replay. Rolling annotations and updated metadata can differ from the recorded snapshots.
+
+The source notes also describe optional reconstruction with the exact DDBJ E-GEAD-649 counts, HPA input and Zhu conventional CD4 inputs. [Sources and reuse](SOURCES.md) · [Zhu extractor](../scripts/zhu/README.md)

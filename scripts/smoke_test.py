@@ -63,7 +63,7 @@ def tsv(path):
 
 def headline(out):
     for assertion in tsv(REPO/"expected_results.tsv"):
-        table = out/"r7/results"/assertion["table"]
+        table = out/"gene_property_adjustment/results"/assertion["table"]
         rows = tsv(table)
         match = dict(x.split("=",1) for x in assertion["selector"].split("|"))
         answer = [r for r in rows if all(r.get(field)==value for field,value in match.items())]
@@ -89,10 +89,10 @@ def go(data,out,verify_r,rscript,figures):
                                "--report",str(out/"TSV_SCHEMA_QA.tsv")]),
         ("Legacy statistics", [*px,str(REPO/"scripts/legacy/run_legacy_reproduction.py"),str(data),
                                str(out/"legacy"),*(["--rscript",rscript] if verify_r else [])]),
-        ("R7 model grid", [*px,str(REPO/"scripts/r7_stats/reproduce.py"),"--data-dir",str(data),
-                           "--out-dir",str(out/"r7"),*(["--verify-r"] if verify_r else [])]),
-        ("R7 figure and mechanism sources", [*px,"-I",str(REPO/"scripts/r7_evidence/verify_release_evidence.py"),
-                 str(data/"data/r7"),"--report",str(out/"R7_EVIDENCE_QA.tsv")]),
+        ("Gene-property model grid", [*px,str(REPO/"scripts/gene_property_adjustment/reproduce.py"),"--data-dir",str(data),
+                           "--out-dir",str(out/"gene_property_adjustment"),*(["--verify-r"] if verify_r else [])]),
+        ("Gene-property figure and mechanism sources", [*px,"-I",str(REPO/"scripts/experimental_evidence/verify_release_evidence.py"),
+                 str(data/"data/r7"),"--report",str(out/"GENE_PROPERTY_EVIDENCE_QA.tsv")]),
     ]
     tasks.append(("Zhu compact evidence", [*px,"-I",str(REPO/"scripts/zhu/extract_zhu_evidence.py"),
                  "verify","--derived-dir",str(data/"data/r8/zhu_derived"),"--candidate-master",str(data/"data/r7/mechanism/CANDIDATE_DIRECTION_MECHANISM.tsv")]))

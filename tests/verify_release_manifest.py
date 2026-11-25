@@ -5,6 +5,10 @@ import gzip
 import hashlib
 from pathlib import Path, PurePosixPath
 import re
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts/release"))
+from layout import canonical_path
 
 
 def sha(path):
@@ -52,7 +56,7 @@ def verify(root, report=None):
         "data/processed/whole_blood_pair_program_differences.tsv",
         "06_figure_table_source_data/supplementary/Supplementary_Figure_S4_source_data.tsv")
     for rel in paths:
-        with (root/rel).open() as stream:
+        with canonical_path(root, rel).open() as stream:
             header = next(csv.reader(stream,delimiter="\t"))
         assert {"anonymous_pair_index","ASD_minus_sibling"} <= set(header)
         assert not {"ASD_score","sibling_score"}.intersection(header)

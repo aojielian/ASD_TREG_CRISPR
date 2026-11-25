@@ -1,5 +1,5 @@
 # Data availability
 
-The current analysis-ready dataset (version 1.1.0) is available on Zenodo at [10.5281/zenodo.24487407](https://doi.org/10.5281/zenodo.24487407) as `ASD_TREG_CRISPR_processed_data_v1.1.0.zip`. The analysis and figure-generation workflows are available in this repository. This release supports reproduction from processed analytical inputs.
+The v1.2.0 companion archive is `ASD_TREG_CRISPR_processed_data_v1.2.0.zip`, with dataset identifier [Zenodo DOI](https://doi.org/10.5281/zenodo.24532983). The archive contains the processed inputs, statistical results, and source data for Figures 1–4, Supplementary Figures S1–S23, and Supplementary Tables S1–S20. The [archive verification instructions](docs/REPRODUCIBILITY.md#verify-and-extract) describe how to prepare the SHA-256 sidecar and check the downloaded file.
 
-The collection DOI is [10.5281/zenodo.22704658](https://doi.org/10.5281/zenodo.22704658). The previously published v1.0.0 data remain available at [10.5281/zenodo.22704659](https://doi.org/10.5281/zenodo.22704659). Cite the version-specific DOI corresponding to the data used. Original accessions, source files and reuse terms are in the [source guide](docs/SOURCES.md).
+The archive includes reusable processed matrices and harmonized analytical inputs. Publisher supplements, source metadata, and annotations identified in the external-input manifest are available separately under the applicable provider terms. The manifest records their source links, filenames, and checksums. [Sources and reuse](docs/SOURCES.md)
